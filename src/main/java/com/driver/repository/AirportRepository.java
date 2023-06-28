@@ -13,12 +13,12 @@ import java.util.Map;
 
 @Repository
 public class AirportRepository {
-    Map<String, Airport> airportMap = new HashMap<>();
-    Map<Integer, Flight> flightMap = new HashMap<>();
-    Map<Integer , Passenger> passengerMap = new HashMap<>();
+    public Map<String, Airport> airportMap = new HashMap<>();
+    public Map<Integer, Flight> flightMap = new HashMap<>();
+    public Map<Integer , Passenger> passengerMap = new HashMap<>();
 
-    Map<Integer , List<Passenger>> ticketMap = new HashMap<>();
-    Map<Integer , Flight> passengerFlightMap = new HashMap<>();
+    public Map<Integer , List<Passenger>> ticketMap = new HashMap<>();
+    public Map<Integer , Flight> passengerFlightMap = new HashMap<>();
 
     public AirportRepository() {
         this.airportMap = new HashMap<>();
