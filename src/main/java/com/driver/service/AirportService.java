@@ -8,6 +8,8 @@ import com.driver.repository.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class AirportService {
 
@@ -40,5 +42,17 @@ public class AirportService {
 
     public String bookATicket(Integer flightId, Integer passengerId) {
         return airportRepository.bookATicket(flightId , passengerId);
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        return airportRepository.getNumberOfPeopleOn(date , airportName);
+    }
+
+    public int calculateFlightFare(Integer flightId) {
+        return airportRepository.calculateFlightFare(flightId);
+    }
+
+    public String cancelATicket(Integer flightId, Integer passengerId) {
+        return airportRepository.cancelATicket(flightId , passengerId);
     }
 }

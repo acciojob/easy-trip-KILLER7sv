@@ -6,19 +6,17 @@ import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class AirportRepository {
-    public Map<String, Airport> airportMap = new HashMap<>();
-    public Map<Integer, Flight> flightMap = new HashMap<>();
-    public Map<Integer , Passenger> passengerMap = new HashMap<>();
+    public Map<String, Airport> airportMap;
+    public Map<Integer, Flight> flightMap;
+    public Map<Integer , Passenger> passengerMap;
 
-    public Map<Integer , List<Passenger>> ticketMap = new HashMap<>();
-    public Map<Integer , Flight> passengerFlightMap = new HashMap<>();
+    public Map<Integer , List<Passenger>> ticketMap;
+    public Map<Integer , Flight> passengerFlightMap;
+    private int flightFare;
 
     public AirportRepository() {
         this.airportMap = new HashMap<>();
@@ -26,6 +24,7 @@ public class AirportRepository {
         this.passengerMap = new HashMap<>();
         this.ticketMap = new HashMap<>();
         this.passengerFlightMap = new HashMap<>();
+        this.flightFare = 3000;
     }
 
     public void addAirport(Airport airport) {
@@ -92,5 +91,27 @@ public class AirportRepository {
         ticketMap.put(flightId , currpassengers);
         passengerFlightMap.put(passengerId , flightMap.get(flightId));
         return "SUCCESS";
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        int count = 0;
+        Airport airport = airportMap.get(airportName);
+
+        for(int flight : flightMap.keySet()){
+            if(flightMap.get(flight).getFromCity().equals(airport.getCity())){
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+    public int calculateFlightFare(Integer flightId) {
+        flightFare = ticketMap.get(flightId).size() * 50;
+        return flightFare;
+    }
+
+    public String cancelATicket(Integer flightId, Integer passengerId) {
+        return "";
     }
 }
