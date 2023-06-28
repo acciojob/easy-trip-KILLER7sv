@@ -10,22 +10,13 @@ import java.util.*;
 
 @Repository
 public class AirportRepository {
-    public Map<String, Airport> airportMap;
-    public Map<Integer, Flight> flightMap;
-    public Map<Integer , Passenger> passengerMap;
+    public Map<String, Airport> airportMap = new HashMap<>();
+    public Map<Integer, Flight> flightMap = new HashMap<>();
+    public Map<Integer , Passenger> passengerMap = new HashMap<>();
 
-    public Map<Integer , List<Passenger>> ticketMap;
-    public Map<Integer , Flight> passengerFlightMap;
-    private int flightFare;
-
-    public AirportRepository() {
-        this.airportMap = new HashMap<>();
-        this.flightMap = new HashMap<>();
-        this.passengerMap = new HashMap<>();
-        this.ticketMap = new HashMap<>();
-        this.passengerFlightMap = new HashMap<>();
-        this.flightFare = 3000;
-    }
+    public Map<Integer , List<Passenger>> ticketMap = new HashMap<>();
+    public Map<Integer , Flight> passengerFlightMap = new HashMap<>();
+    private int flightFare = 3000;
 
     public void addAirport(Airport airport) {
 
