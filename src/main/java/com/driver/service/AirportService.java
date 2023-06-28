@@ -1,4 +1,5 @@
-package com.driver.services;
+package com.driver.service;
+
 import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
@@ -8,72 +9,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 
+@Service
 public class AirportService {
 
-    private static AirportRepository airportRepository =new AirportRepository();
+//    @Autowired
+//    AirportRepository airportRepository;
+    private static AirportRepository airportRepository = new AirportRepository();
 
-    public static void addAirport(Airport airport) {
+    public void addAirport(Airport airport) {
         airportRepository.addAirport(airport);
     }
 
-    public void addFlight(Flight flight) {
-        airportRepository.addFlight(flight);
-    }
-
-    public void addPassenger(Passenger passenger) {
-        airportRepository.addPassenger(passenger);
-    }
-
     public String getLargestAirportName() {
-        List<Airport> allAirport=airportRepository.getAllAirport();
-        int max=0;
-        String str=allAirport.get(0).getAirportName();
-        for (Airport airport:allAirport){
-            if(max<airport.getNoOfTerminals()){
-                max=airport.getNoOfTerminals();
-                str=airport.getAirportName();
-            }
-            if (max==airport.getNoOfTerminals()) {
-                int check=str.compareTo(airport.getAirportName());
-                if(check>0){
-                    str=airport.getAirportName();
-                }
-            }
-        }
-        return str;
+        return airportRepository.getLargestAirportName();
     }
 
     public double getShortestDurationOfPossibleBetweenTwoCities(City fromCity, City toCity) {
-        List<Flight> flightList=airportRepository.getAllFlight();
-        double min=Double.MAX_VALUE;
-        for(Flight flight:flightList){
-            if(flight.getFromCity().equals(fromCity) && flight.getToCity().equals(toCity) && min>flight.getDuration()){
-                min=flight.getDuration();
-            }
-        }
-        if(min==Double.MAX_VALUE)return -1;
-        return min;
+        return airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromCity , toCity);
     }
 
-    public String bookTicket(Integer flightId, Integer passengerId) {
-        return airportRepository.bookTicket(flightId,passengerId);
-    }
-
-    public String cancelATicket(Integer flightId, Integer passengerId) {
-        return airportRepository.cancelATicket(flightId,passengerId);
-    }
-
-    public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
-        return airportRepository.countOfBookingsDoneByPassengerAllCombined(passengerId);
-    }
-
-    public int getNumberOfPeopleOn(Date date, String airportName) {
-        return airportRepository.getNumberOfPeopleOn(date,airportName);
+    public String addPassenger(Passenger passenger) {
+        return airportRepository.addPassenger(passenger);
     }
 
     public String getAirportNameFromFlightId(Integer flightId) {
         return airportRepository.getAirportNameFromFlightId(flightId);
+    }
+
+    public String addFlight(Flight flight) {
+        return airportRepository.addFlight(flight);
+    }
+
+    public String bookATicket(Integer flightId, Integer passengerId) {
+        return airportRepository.bookATicket(flightId , passengerId);
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        return airportRepository.getNumberOfPeopleOn(date , airportName);
+    }
+
+    public int calculateFlightFare(Integer flightId) {
+        return airportRepository.calculateFlightFare(flightId);
+    }
+
+    public String cancelATicket(Integer flightId, Integer passengerId) {
+        return airportRepository.cancelATicket(flightId , passengerId);
     }
 }
