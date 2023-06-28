@@ -26,6 +26,7 @@ public class AirportController {
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
+
         airportService.addAirport(airport);
         return "SUCCESS";
     }

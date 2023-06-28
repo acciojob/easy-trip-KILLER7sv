@@ -20,8 +20,16 @@ public class AirportRepository {
     Map<Integer , List<Passenger>> ticketMap = new HashMap<>();
     Map<Integer , Flight> passengerFlightMap = new HashMap<>();
 
+    public AirportRepository() {
+        this.airportMap = new HashMap<>();
+        this.flightMap = new HashMap<>();
+        this.passengerMap = new HashMap<>();
+        this.ticketMap = new HashMap<>();
+        this.passengerFlightMap = new HashMap<>();
+    }
 
     public void addAirport(Airport airport) {
+
         airportMap.put(airport.getAirportName() , airport);
     }
 
