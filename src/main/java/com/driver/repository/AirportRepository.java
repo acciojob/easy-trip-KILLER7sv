@@ -122,7 +122,7 @@ public class AirportRepository {
     }
 
     public int calculateFlightFare(Integer flightId) {
-        int price = this.flightFare + flightPassenger.get(flightId).size() * 50;
+        int price = this.flightFare + 50;
         return price;
     }
 
