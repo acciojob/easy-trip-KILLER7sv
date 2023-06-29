@@ -35,12 +35,12 @@ public class AirportService {
                 max=airport.getNoOfTerminals();
                 str=airport.getAirportName();
             }
-            if (max==airport.getNoOfTerminals()) {
-                int check=str.compareTo(airport.getAirportName());
-                if(check>0){
-                    str=airport.getAirportName();
-                }
-            }
+//            if (max==airport.getNoOfTerminals()) {
+//                int check=str.compareTo(airport.getAirportName());
+//                if(check>0){
+//                    str=airport.getAirportName();
+//                }
+//            }
         }
         return str;
     }
