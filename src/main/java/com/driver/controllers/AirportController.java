@@ -60,8 +60,7 @@ public class AirportController {
         //Price for any flight will be : 3000 + noOfPeopleWhoHaveAlreadyBooked*50
         //Suppose if 2 people have booked the flight already : the price of flight for the third person will be 3000 + 2*50 = 3100
         //This will not include the current person who is trying to book, he might also be just checking price
-
-        return 0;
+        return airportService.calculateFlightFare(flightId);
 
     }
 
@@ -119,6 +118,7 @@ public class AirportController {
         //Calculate the total revenue that a flight could have
         //That is of all the passengers that have booked a flight till now and then calculate the revenue
         //Revenue will also decrease if some passenger cancels the flight
+        int revenue = airportService.calculateRevenueOfAFlight(flightId);
         return 0;
     }
 

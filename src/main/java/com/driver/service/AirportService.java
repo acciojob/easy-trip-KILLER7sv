@@ -76,4 +76,12 @@ public class AirportService {
     public String getAirportNameFromFlightId(Integer flightId) {
         return airportRepository.getAirportNameFromFlightId(flightId);
     }
+
+    public int calculateFlightFare(Integer flightId) {
+        return airportRepository.calculateFlightFare(flightId);
+    }
+
+    public int calculateRevenueOfAFlight(Integer flightId) {
+        return airportRepository.calculateRevenueOfAFlight(flightId);
+    }
 }

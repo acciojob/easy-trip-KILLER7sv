@@ -20,6 +20,8 @@ public class AirportRepository {
     Map<Integer,List<Integer>> flightPassenger=new HashMap<>();
     Map<Integer,List<Integer>> passengerWithFlightsMap =new HashMap();
     Map<Integer,Integer> bookingCount =new HashMap();
+
+    private int flightFare = 3000;
     public void addAirport(Airport airport) {
         String name=airport.getAirportName();
         airportList.add(airport);
@@ -117,5 +119,15 @@ public class AirportRepository {
             }
         }
         return null;
+    }
+
+    public int calculateFlightFare(Integer flightId) {
+        int price = this.flightFare + flightPassenger.get(flightId).size() * 50;
+        return price;
+    }
+
+    public int calculateRevenueOfAFlight(Integer flightId) {
+        List<Integer> list = flightPassenger.get(flightId);
+        return list.size()*flightFare;
     }
 }
