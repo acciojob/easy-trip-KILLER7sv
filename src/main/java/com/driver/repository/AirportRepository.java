@@ -52,6 +52,11 @@ public class AirportRepository {
 
         Flight flight=flightMap.get(flightId);
         List<Integer> listOfPassenger=flightPassenger.getOrDefault(flightId,new ArrayList<>());
+        for(int a : listOfPassenger){
+            if(passengerId == a){
+                return "FAILURE";
+            }
+        }
         if (flight.getMaxCapacity()==listOfPassenger.size())return "FAILURE";
 
         List<Integer> listOfFilghtsWithPasenger=passengerWithFlightsMap.getOrDefault(passengerId,new ArrayList<>());
@@ -127,7 +132,6 @@ public class AirportRepository {
     }
 
     public int calculateRevenueOfAFlight(Integer flightId) {
-        List<Integer> list = flightPassenger.get(flightId);
-        return list.size()*flightFare;
+        return flightFare;
     }
 }
