@@ -101,7 +101,7 @@ public class AirportRepository {
         int people=0;
         for(Flight flight:flights){
             if(flight.getFromCity().equals(airport.getCity()) || flight.getToCity().equals(airport.getCity()) && flight.getFlightDate().equals(date)){
-                people+=flight.getMaxCapacity();
+                people+=flightPassenger.get(flight).size();
             }
         }
         return people;
