@@ -108,7 +108,7 @@ public class AirportRepository {
         int people=0;
         for(Flight flight:flights){
             if(flight.getFromCity().equals(airport.getCity()) || flight.getToCity().equals(airport.getCity()) && flight.getFlightDate().equals(date)){
-                people+=flightPassenger.get(flight).size();
+                people += flightPassenger.get(flight.getFlightId()).size();
             }
         }
         return people;
@@ -123,7 +123,7 @@ public class AirportRepository {
                 return airport.getAirportName();
             }
         }
-        return null;
+        return "null";
     }
 
     public int calculateFlightFare(Integer flightId) {
